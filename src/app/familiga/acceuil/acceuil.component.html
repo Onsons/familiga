@@ -1,0 +1,56 @@
+
+<div class="jumbotron">
+  <h3 class="display-3"> Bienvenu les Tliba's</h3>
+  <div class="row">
+  <div class="col-md-6">
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+    This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+    This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+   <div><a [routerLink]="['/invitation']" class="btn btn-primary btn-lg" role="button" >Inviter les membres de la famille !</a></div> 
+  </div>
+  
+  <div class="col-md-6">
+    <img src="assets/img/acceuil.svg">
+  </div>
+</div>
+</div>
+
+<app-todo></app-todo>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une tache !</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #formulaire="ngForm" >
+          <div class="form-group ">
+              <input type="hidden" class="form-control" id="recipient-name" ngModel name="id" #id="ngModel">
+          
+            <label for="recipient-name" class="col-form-label">Titre</label>
+            <input type="text" class="form-control" id="recipient-name" ngModel name="titre" #title="ngModel" [(ngModel)]="todo.title">
+          </div>
+          <select class="custom-select custom-select-sm" ngModel name="type" #type="ngModel" [(ngModel)]="todo.type" >
+              <option selected>Type de tache</option>
+              <option value="privée">Privée</option>
+              <option value="publique">Publique</option>
+            
+            </select>
+            
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Description</label>
+            <textarea class="form-control" id="message-text" ngModel name="description" #description="ngModel" [(ngModel)]="todo.description" ></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+       
+        <button type="button" class="btn btn-primary btn-small btn-block" (click)="addTodo(formulaire.value)">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>

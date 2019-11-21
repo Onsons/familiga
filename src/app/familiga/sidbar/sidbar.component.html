@@ -1,0 +1,25 @@
+
+<div class="wrapper" >
+  <div class="sidebar">
+      <h2><i class="fas fa-check-double"></i> Familigia </h2>
+      <ul>
+          <li><a [routerLink]="['acceuil']"><i class="fas fa-home"></i>Acceuil</a></li>
+          <li><a [routerLink]="['profile']"><i class="fas fa-user"></i>Profile</a></li>
+          <li><a [routerLink]="['archives']"><i class="fas fa-angle-double-left"></i>Archives</a></li>
+          <li><a [routerLink]="['invitation']"><i class="fas fa-user-plus"></i>Inviter membre</a></li>
+          <li><a [routerLink]="['arrierePlan']"><i class="far fa-images"></i> Arriere plan</a></li>
+          <li><a [routerLink]="['chat']"><i class="fas fa-comments"></i> Chat</a></li>
+         
+      </ul> 
+     
+  </div>
+  <div class="main_content">
+      <div class="header">'La famille doit etre un nid d'amour et douillet'</div>  
+      
+
+      <div>
+      <div class="info">
+       <router-outlet ></router-outlet>
+     </div>
+  </div>
+</div>

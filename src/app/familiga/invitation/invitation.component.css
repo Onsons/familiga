@@ -1,0 +1,11 @@
+button{
+    background-color: #ffc107;
+    border: #ffc107;
+}
+button:hover {
+    color: white;
+    background-color:#4b4276;
+}
+.card{
+    margin-top: 55px;
+}
