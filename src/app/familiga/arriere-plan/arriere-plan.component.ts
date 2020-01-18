@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/user.interface';
 
 @Component({
   selector: 'app-arriere-plan',
@@ -8,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 export class ArrierePlanComponent implements OnInit {
   img: string;
   constructor() { }
-
   ngOnInit() {
   }
   changeBg() {

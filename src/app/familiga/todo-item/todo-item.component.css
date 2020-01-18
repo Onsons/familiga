@@ -1,0 +1,17 @@
+.pos {
+    float: right;
+}
+.type span {
+    color: white
+}
+
+.btn-primary {
+    background-color: #ffc107;
+    border: #ffc107;
+}
+img {
+    margin-left: 100px;
+}
+.hover-cursor { 
+    cursor: pointer;
+}

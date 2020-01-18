@@ -18,9 +18,24 @@ import { TodoComponent } from './familiga/todo/todo.component';
 import { TodolistComponent } from './familiga/todolist/todolist.component';
 import { TodoItemComponent } from './familiga/todo-item/todo-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFireModule } from 'angularfire2';
-import { environment } from 'src/environments/environment';
-
+import { AngularFireModule } from '@angular/fire';
+import {  AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule} from '@angular/fire/auth';
+import { ErrorComponent } from './familiga/error/error.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { HttpModule } from '@angular/http';
+import { FeedComponent } from './familiga/chat/feed/feed.component';
+import { ChatFormComponent } from './familiga/chat/chat-form/chat-form.component';
+import { MessageComponent } from './familiga/chat/message/message.component';
+import { DefaultImagePipe } from './default-image.pipe';
+import { LandingComponent } from './familiga/landing/landing.component';
+import { NavbarComponent } from './familiga/navbar/navbar.component';
+import { TodoMembersComponent } from './familiga/todo-members/todo-members.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ArrierePlanDirective } from './dirctives/arriere-plan.directive';
+import { ToastrModule} from 'ngx-toastr';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +52,15 @@ import { environment } from 'src/environments/environment';
     TodoComponent,
     TodolistComponent,
     TodoItemComponent,
+    ErrorComponent,
+    FeedComponent,
+    ChatFormComponent,
+    MessageComponent,
+    DefaultImagePipe,
+    LandingComponent,
+    NavbarComponent,
+    TodoMembersComponent,
+    ArrierePlanDirective,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +69,25 @@ import { environment } from 'src/environments/environment';
     FormsModule,
     ReactiveFormsModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireAuthModule,
+    AngularFireFunctionsModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp({
+      apiKey: 'AIzaSyCiUYCR3PK0ehImiBtuvwa4SBle2yoIaDw',
+      authDomain: 'familiga-bdab2.firebaseapp.com',
+      databaseURL: 'https://familiga-bdab2.firebaseio.com',
+      projectId: 'familiga-bdab2',
+      storageBucket: 'familiga-bdab2.appspot.com',
+      messagingSenderId: '487754328305',
+      appId: '1:487754328305:web:d31148f82ca4f70a23a150',
+      measurementId: 'G-TJ9NHSMFVV'
+    }
+    ),
+    BrowserAnimationsModule,
+    AngularFireStorageModule,
+    HttpModule,
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

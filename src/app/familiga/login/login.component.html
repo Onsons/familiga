@@ -31,20 +31,37 @@
               <div class="content ">
                   <h2>Se Connecter !</h2>
                   <br>
-                <form >
+                <form  #f="ngForm" (ngSubmit)="login(f)">
+                    <div *ngIf="err">
+                        <small class="text-danger">Retapper vos données!</small>
+                      </div>
                   <div class="form-group">
-                    <input id="login-username" type="text" name="loginUsername" required placeholder="Entez votre Email" class="form-control">
-                   
+                    <input type="email" name="email" #email="ngModel" placeholder="Entez votre Email" class="form-control" ngModel  required email >
+                    <div *ngIf="email.touched && email.errors?.required">
+                      <small class="text-danger">* Email est obligatoire</small>
+                    </div>
+                    <div *ngIf=" email.touched && email.errors?.email" >
+                   <small  class="text-danger"> *Email Incorrect</small>
+                    </div>
                   </div>
                   <div class="form-group">
-                    <input id="login-password" type="password" name="loginPassword" required placeholder="Entrez votre mot de passe"  class="form-control">
-                    
+                    <input type="password" name="password" #password="ngModel"  placeholder="Entrez votre mot de passe"  class="form-control" ngModel required minlength="6">
+                    <div *ngIf=" password.touched && password.errors?.required">
+                      <small  class="text-danger">* mot de passe est obligatoire</small>
+                    </div>
+      
                   </div>
-                  <button type="submit" class="btn btn-primary btn-small btn-block" >Se connecter</button>
-
+                  <button type="submit" class="btn btn-primary btn-small btn-block" [disabled]="f.invalid" >Se connecter</button>
+                  <br>
+                  <!-- <button type="submit" class="btn btn-primary btn-small social "  > <img src="assets/img/google.png"> Google </button>
+                  <button type="submit" class="btn btn-primary btn-small facebook social"  > <img src="assets/img/google.png"> Facebook </button> -->
                   <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                 </form>
+                <hr>
+               
+  
               </div>
+             
             </div>
           </div>
         </div>

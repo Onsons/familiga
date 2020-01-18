@@ -1,0 +1,47 @@
+.avatar {
+    margin-left: 2px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border:solid #646464;
+  }
+ 
+.zippy {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 550px;
+  margin-bottom: 20px;
+}
+
+.zippy-heading {
+  font-weight: bold;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.expanded {
+  background: #ffc107 ;
+  opacity: 0.8;
+  border-radius: 3px 3px 0px 0px;
+}
+
+.glyphicon {
+  float: right;
+}
+button {
+  background-color: #ffc107 ;;
+  border-color: #ffc107 ;;
+}
+.b {
+  margin-left: 150px;
+  float: right;
+}
+.non {
+  background-color: #4b4276 ;
+  border-color: #4b4276 ;
+  color: white
+}
+.oui {
+  background-color: #ffc107 ;
+  border-color: #ffc107 ;
+}
