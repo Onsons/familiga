@@ -3,17 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  firebaseConfig : {
-    apiKey: 'AIzaSyCiUYCR3PK0ehImiBtuvwa4SBle2yoIaDw',
-    authDomain: 'familiga-bdab2.firebaseapp.com',
-    databaseURL: 'https://familiga-bdab2.firebaseio.com',
-    projectId: 'familiga-bdab2',
-    storageBucket: 'familiga-bdab2.appspot.com',
-    messagingSenderId: '487754328305',
-    appId: '1:487754328305:web:d31148f82ca4f70a23a150',
-    measurementId: 'G-TJ9NHSMFVV'
-  }
+  production: false
 };
 
 /*

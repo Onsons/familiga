@@ -1,0 +1,20 @@
+ 
+  <div>
+      <div *ngIf="!isuser"  class="incoming_msg">
+      <div class="incoming_msg_img"> <img src="assets/img/avatar-png-icon-23.png" alt="sunil"> <strong>{{userName}}</strong> </div>
+        <div class="received_msg">
+          <div class="received_withd_msg">
+            <p> {{messageContent}}</p>
+            <span class="time_date">  {{timeStamp}} AM </span></div>
+        </div>
+      </div>
+      <div class="outgoing_msg" *ngIf="isuser">
+       
+        <div class="sent_msg">
+          <strong>Moi</strong>
+          <p>
+            {{messageContent}}
+          </p>
+          <span class="time_date">  {{timeStamp}} AM  </span> </div>
+    </div>   
+

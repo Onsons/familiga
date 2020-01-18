@@ -1,7 +1,119 @@
+
 <ul class="list-group list-group-flush">
-    <li class="list-group-item form-check">
-        <input type="checkbox">
-          Task 1 
-          <span style="float: right;"> <i class="fas fa-pencil-alt"></i>  &nbsp; <i class="fas fa-trash-alt"></i></span>
+    <li class="list-group-item form-check" *ngFor="let task of todos" @fade> 
+              <input type="checkbox"  class="hover-cursor" [class.text-success]= "task.cheched" (click)="chechedOrUncheked(task.id, task.cheched)">
+              <strong> {{task.titre}}</strong> 
+              <div class="pos" *ngIf="task.type === 'publique'">
+                    <div class="type"><span class="badge badge-pill badge-warning">{{task?.type}}</span></div>
+              </div>
+              <div  class="pos" *ngIf="task.type === 'privée'">
+                    <div class="type"><span class="badge badge-pill badge-danger">{{task?.type}}</span></div>
+              </div>
+              <br>
+                <small>{{task?.description}}</small>
+                <span style="float: right;"> <i class="fas fa-pencil-alt"  (click)="showEdit(task)"></i>  &nbsp; <i class="fas fa-trash-alt"   (click)="deleteTask(task.id)"></i></span>  
+               <div *ngIf="show && t.id == task.id">
+                <form #f="ngForm" class="container">
+                  <div class="form-row ">
+                    <div class="col">
+                     <input type="text" placeholder="Nouvelle Tache" class="form-control "  name="titre" #titre="ngModel" [(ngModel)]="task.titre"  >
+                    </div>
+                    <div class="col">
+                      <div class="form-group ">
+                        <select class="custom-select "  ngModel name="type" #type="ngModel" required  [(ngModel)]="task.type">
+                            <option selected value="privée">Privée</option>
+                            <option value="publique">Publique</option>  
+                          </select>
+                          <div *ngIf="type.touched && type.errors?.required">
+                              <small class="text-danger">* Type est obligatoire</small>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                    <div class="form-group">
+                      <textarea class="form-control" id="message-text" ngModel name="description" #description="ngModel"  [(ngModel)]="task.description"></textarea>
+                    </div>
+                </div>
+                  </div>
+            
+                  <button type="submit" class="btn btn-primary btn-sm"  (click)="editerTask(task.id,task)">Edit</button>
+              
+                </form>
+               </div>
+  
+                <div class="modal fade" id="exampleModal12" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editer une tache !</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form #formulaire="ngForm"  >
+                          <div class="form-group ">
+                            <label for="recipient-name" class="col-form-label">Titre</label>
+                            <input type="text" class="form-control" ngModel name="titre" #titre="ngModel"  required  #title="ngModel" [(ngModel)]="task.titre">
+                            <div *ngIf="titre.touched && titre.errors?.required">
+                                <small class="text-danger">* Titre est obligatoire</small>
+                           </div>
+                           <input type="hidden" class="form-control" ngModel name="userId"  #userId="ngModel">
+                           <input type="hidden" class="form-control" ngModel name="checked" #checked="ngModel" >
+                
+                          </div>
+                          <div class="form-group ">
+                          <select class="custom-select custom-select-sm" ngModel name="type" #type="ngModel" required  [(ngModel)]="task.type">
+                              <option selected value="privée">Privée</option>
+                              <option value="publique">Publique</option>  
+                            </select>
+                            <div *ngIf="type.touched && type.errors?.required">
+                                <small class="text-danger">* Type est obligatoire</small>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">Description</label>
+                            <textarea class="form-control" id="message-text" ngModel name="description" #description="ngModel"  [(ngModel)]="task.description"></textarea>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="submit" class="btn btn-primary btn-small btn-block"  (click)="editerTask(task.id,task)" data-dismiss="modal" [disabled]="formulaire.invalid" >
+                                 Editer
+                              </button>
+                          </div>
+                        </form>
+                      </div>
+                    
+                    </div>
+                  </div>
+                </div>
+              
+
+                
+                <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Suppression ! </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                <img src="assets/img/cancel.png">
+                <br>
+                <br>
+                <div class="delete">              
+                  <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio dolorum ducimus, obcaecati voluptas, tempore fugit.
+                              onsectetur adipisicing elit. Odio dolorum ducimus,
+                  </small>
+                </div> 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary btn-small btn-block" data-dismiss="modal" >Supprimer</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </li>
 </ul>

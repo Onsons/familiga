@@ -1,3 +1,52 @@
-<p>
-  archives works!
-</p>
+
+<br>
+<div class="container">
+    <h1> Recherche ... </h1>
+    <br>
+    <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Nostrum aspernatur deleniti provident quidem. Sed expedita nemo,
+         quis, repellendus quas commodi quasi impedit,
+         voluptas aspernatur inventore delectus natus. Placeat, officiis debitis.</small>
+
+<br>
+<br>
+<br>
+<form #f="ngForm">
+<div class="input-group mb-3">
+ <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+    </div>
+    <input type="text" class="form-control" placeholder="Rechercher une tache" ngModel name="search" (change)="search(f.value)">
+  </div>
+</form>
+<br>
+  <div >
+      
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Titre</th>
+            <th scope="col"> Description</th>
+            <th scope="col"> Type</th>
+          </tr>
+        </thead>
+        <tbody>
+       
+          <tr *ngFor="let task of todos">
+          <td>{{task.titre}}</td>
+            <td>{{task.description}}</td>
+            <td><span class="badge badge-warning" *ngIf="task.type == 'publique'">
+                {{task.type}}
+            </span>
+            <span class="badge badge-danger" *ngIf="task.type == 'privée'">
+                {{task.type}}
+            </span>
+           </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="empty" *ngIf="empty">
+         Aucun élement n'est trouvé ! 
+      </div>
+  </div>
+</div>

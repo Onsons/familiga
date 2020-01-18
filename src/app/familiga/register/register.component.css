@@ -114,7 +114,7 @@
 }
 button:hover {
     color: white;
-    background-color:#4b4276;
+    background-color:hsl(250, 28%, 36%);
 }
 h2{
     color:#4b4276;
@@ -128,4 +128,7 @@ hr {
 }
 form{
     margin-left: 50px;
+}
+button:disabled {
+  background-color: grey;
 }

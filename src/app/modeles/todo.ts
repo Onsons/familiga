@@ -4,5 +4,6 @@ export class Todo {
     description: string;
     type: string;
     checked = false;
+    userId: string;
 
 }

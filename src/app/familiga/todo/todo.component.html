@@ -1,10 +1,60 @@
-<div class="row">
+   <br>
+  <div class="row">
     <div class=" col-md-6 col-ms-6">
     <div class="card ">
       <div class="card-header">
-          <span><img src="assets/img/ons.jpg" class="avatar"> </span>   <strong> Moi </strong>
-          <span style="float: right;"> <i class="fas fa-plus-circle" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"></i>  &nbsp; <i class="fas fa-trash-alt"></i></span>
+          <span><img src="{{user.imageUser|defaultImage}}" class="avatar"> </span> &nbsp;  <strong>{{user.username}} </strong>
+          <span style="float: right;"> <i class="fas fa-plus-circle" data-toggle="modal" data-target="#exampleModal5" data-whatever="@mdo"></i> </span>
       </div>
       <app-todolist></app-todolist>
     </div>
+
+    
     </div>
+    
+    <app-todo-members></app-todo-members>
+
+    <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajouter une tache !</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form #formulaire="ngForm" (ngSubmit)=" addTodo(formulaire)" >
+              <div class="form-group ">
+                <label for="recipient-name" class="col-form-label">Titre</label>
+                <input type="text" class="form-control" ngModel name="titre" #titre="ngModel" [(ngModel)]="todoService.toDo.title" required  #title="ngModel">
+                <div *ngIf="titre.touched && titre.errors?.required">
+                    <small class="text-danger">* Titre est obligatoire</small>
+               </div>
+               <input type="hidden" class="form-control" ngModel name="userId"  [(ngModel)]="todoService.toDo.userId"  #userId="ngModel">
+               <input type="hidden" class="form-control" ngModel name="checked"  [(ngModel)]="todoService.toDo.checked" #checked="ngModel" >
+    
+              </div>
+              <div class="form-group ">
+              <select class="custom-select custom-select-sm" ngModel name="type" #type="ngModel" [(ngModel)]="todoService.toDo.type" required>
+                  <option selected value="privée">Privée</option>
+                  <option value="publique">Publique</option>  
+                </select>
+                <div *ngIf="type.touched && type.errors?.required">
+                    <small class="text-danger">* Type est obligatoire</small>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Description</label>
+                <textarea class="form-control" id="message-text" ngModel name="description" #description="ngModel" [(ngModel)]="todoService.toDo.description" ></textarea>
+              </div>
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary btn-small btn-block"  [disabled]="formulaire.invalid" >Ajouter</button>
+              </div>
+            </form>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+ 
